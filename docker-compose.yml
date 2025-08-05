@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+    environment:
+      - CI=true
+    entrypoint: []
+    command: npm run test
+
+  # Service for viewing HTML reports
+  report:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9323:9323"
+    volumes:
+      - ./playwright-report:/app/playwright-report
+    entrypoint: []
+    command: npx http-server playwright-report -p 9323

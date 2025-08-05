@@ -1,0 +1,19 @@
+# Exclude node modules
+node_modules
+
+# Exclude test results and reports (will be mounted as volumes)
+test-results
+playwright-report
+
+# Exclude git files
+.git
+.gitignore
+
+# Exclude Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Exclude other unnecessary files
+.DS_Store
+*.log
